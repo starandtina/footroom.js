@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Awesome jQuery plugin Test Suite</title>
+  <style>
+
+  .footer {
+    padding: 30px 0;
+    color: #fff;
+    background-color: #000;
+  }
+
+  .footer--fixed {
+      position: fixed;
+      z-index: 10;
+      right: 0;
+      left: 0;
+      bottom: 0
+  }
+
+  .slide {
+      -webkit-transition: all .25s ease-in-out;
+      -moz-transition: all .25s ease-in-out;
+      -o-transition: all .25s ease-in-out;
+      transition: all .25s ease-in-out
+  }
+
+  .slide--reset {
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0)
+  }
+
+  .slide--up {
+    padding: 30px 0;
+    color: red;
+    background-color: #292f36;
+  }
+  </style>
+  <!-- Load local jQuery. -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <!-- Load local underscore. -->
+  <script src="../bower_components/underscore/underscore.js"></script>
+  <!-- Load local lib and tests. -->
+  <script src="../src/footroom.js"></script>
+</head>
+<body>
+
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <p>
+    a set of DOM elements, the .add() method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to .add() can be pretty much anything that $() accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.
+  </p>
+  <footer id="footer" class="footer slide" role="banner">I'M FOOTER</footer>
+  <script>
+
+  (function() {
+      $('#footer').footroom({
+          tolerance: {
+            down : 10,
+            up : 200
+          },
+          offset : 0,
+          classes: {
+            initial: 'slide',
+            noBottom:'footer--fixed',
+            pinned: 'slide--reset',
+            unpinned: 'slide--up'
+          }
+      });
+  }());
+</script>
+</body>
+</html>

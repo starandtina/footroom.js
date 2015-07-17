@@ -15,7 +15,11 @@
     this.classes = options.classes;
     this.tolerance = options.tolerance;
     this.scroller = options.scroller;
+    this.offset = options.offset;
     this.initialised = false;
+
+    this.onPin = options.onPin;
+    this.onUnpin = options.onUnpin;
   }
   Footroom.prototype = {
     constructor: Footroom,
@@ -32,7 +36,7 @@
       if (!this.initialised) {
         this.lastKnownScrollY = this.getScrollY();
         this.initialised = true;
-        $(this.scroller).on('scroll.footroom', _.throttle(_.bind(this.update, this), 150));
+        $(this.scroller).on('scroll.footroom', _.throttle(_.bind(this.update, this), 250));
       }
     },
     pin: function () {
@@ -41,6 +45,7 @@
       if (this.$elem.hasClass(classes.unpinned)) {
         this.$elem.addClass(classes.pinned);
         this.$elem.removeClass(classes.unpinned);
+        this.onPin && this.onPin.call(this);
       }
     },
     unpin: function () {
@@ -49,6 +54,7 @@
       if (this.$elem.hasClass(classes.pinned) || !this.$elem.hasClass(classes.unpinned)) {
         this.$elem.addClass(classes.unpinned);
         this.$elem.removeClass(classes.pinned);
+        this.onUnpin && this.onUnpin.call(this);
       }
     },
     bottom: function () {
@@ -116,14 +122,14 @@
     // determine if it is appropriate to pin
     shouldPin: function (currentScrollY, toleranceExceeded) {
       var scrollingDown = currentScrollY > this.lastKnownScrollY;
-      var pastOffset = currentScrollY + this.getViewportHeight() >= this.getScrollerHeight();
+      var pastOffset = currentScrollY + this.getViewportHeight() - this.offset >= this.getScrollerHeight();
 
       return (scrollingDown && toleranceExceeded) || pastOffset;
     },
     // determine if it is appropriate to unpin
     shouldUnpin: function (currentScrollY, toleranceExceeded) {
       var scrollingUp = currentScrollY < this.lastKnownScrollY;
-      var pastOffset = currentScrollY + this.getViewportHeight() < this.getScrollerHeight();
+      var pastOffset = currentScrollY + this.getViewportHeight() + this.offset < this.getScrollerHeight();
 
       return scrollingUp && toleranceExceeded && pastOffset;
     },

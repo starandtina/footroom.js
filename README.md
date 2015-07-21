@@ -27,8 +27,6 @@ In your web page:
             },
             offset : 200,
             classes: {
-              initial: 'slide',
-              // noBottom: 'footer-fixed',
               pinned: 'slide--reset',
               unpinned: 'slide--up footer-fixed'
             }

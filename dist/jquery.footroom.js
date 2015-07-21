@@ -1,10 +1,5 @@
-/*
- *
- *
- *
- * Copyright (c) 2015 Zhang Xin
- * Licensed under the MIT license.
- */
+/*! footroom - v0.0.1 - 2015-07-21
+* Copyright (c) 2015 Zhang Xin; Licensed MIT */
 (function ($) {
   function Footroom(elem, options) {
     options = _.defaults(options, Footroom.options);
@@ -127,7 +122,7 @@
     // determine if it is appropriate to pin
     shouldPin: function (currentScrollY, toleranceExceeded) {
       var scrollingDown = currentScrollY > this.lastKnownScrollY;
-      var pastOffset = currentScrollY + this.getViewportHeight() + this.offset >= this.getScrollerHeight();
+      var pastOffset = currentScrollY + this.getViewportHeight() - this.offset >= this.getScrollerHeight();
 
       return (scrollingDown && toleranceExceeded) || pastOffset;
     },
@@ -181,9 +176,9 @@
 
   $.fn.footroom = function (option) {
     return this.each(function () {
-      var $this = $(this);
-      var data = $this.data('footroom');
-      var options = typeof option === 'object' && option;
+      var $this = $(this),
+        data = $this.data('footroom'),
+        options = typeof option === 'object' && option;
 
       options = $.extend(true, {}, Footroom.options, options);
 

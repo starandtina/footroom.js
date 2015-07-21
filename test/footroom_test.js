@@ -12,7 +12,7 @@
 
   test('is footroom', function () {
     expect(1);
-    strictEqual(this.elems.footroom().text(), 'footroom0footroom1footroom2', 'should be footroom');
+    strictEqual(this.elems.footroom().text(), 'lame test markupnormal test markupawesome test markup', 'should be footroom');
   });
 
 }(jQuery));

@@ -3,41 +3,66 @@
 <head>
   <meta charset="utf-8">
   <title>Footroom DEMO</title>
-  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' rel="stylesheet"/>
+  <link href='../bower_components/bootstrap/dist/css/bootstrap.css' rel="stylesheet"/>
   <style>
-
   #footer {
     padding: 30px;
     color: #fff;
     background-color: #000;
   }
 
-  .footer-fixed {
+  .footroom--pinned {
     position: fixed;
     z-index: 10;
     right: 0;
     left: 0;
     bottom: 0;
+
   }
 
-  .slide {
-      -webkit-transition: all .25s ease-in-out;
-      -moz-transition: all .25s ease-in-out;
-      -o-transition: all .25s ease-in-out;
-      transition: all .25s ease-in-out
+  .animated
+  {
+      animation-duration: 3s;
+      animation-fill-mode: both;
   }
 
-  .slide--reset {
-      -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-      transform: translateY(0)
+  @keyframes slideInUp
+  {
+      from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+      }
+
+      to {
+        transform: translate3d(0, 0, 0);
+      }
+  }
+  .animated.slideInUp
+  {
+      animation-name: slideInUp;
   }
 
-  .slide--up {
-    padding: 30px 0;
-    color: red;
-    background-color: #292f36;
+  @keyframes slideInDown {
+    from {
+      transform: translate3d(0, -100%, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
   }
+
+  .slideInDown {
+    animation-name: slideInDown;
+  }
+
+  .animated.slideInDown
+  {
+    animation-name: slideInDown;
+  }
+
+
   </style>
   <!-- Load local jQuery. -->
   <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -193,31 +218,27 @@
         </p>
       </div>
     </div>
-    <footer id="footer" class="footer slide " role="banner">
+    <footer id="footer" class="footer animated" role="banner">
       <div class='container'>
         <div class='row'>
-          <div class='col-xs-12 col-md-12'> I'M FOOTER</div>
+          <div class='col-xs-12 col-md-12'>I'M FOOTER</div>
         </div>
       </div>
-
     </footer>
-
   </div>
   <script>
-
-  (function() {
-      $('#footer').footroom({
-          tolerance: {
-            down : 2010,
-            up : 10
-          },
-          offset : 200,
-          classes: {
-            // noBottom: 'footer-fixed',
-            pinned: 'slide--reset',
-            unpinned: 'slide--up footer-fixed'
-          }
-      });
+  (function () {
+    $('#footer').footroom({
+      tolerance: {
+        down: 0,
+        up: 10
+      },
+      offset: 100,
+      classes: {
+        pinned: 'footroom--pinned slideInUp',
+        unpinned: 'footroom--unpinned slideInDown'
+      }
+    });
   }());
 </script>
 </body>

@@ -125,17 +125,17 @@
     },
     // determine if it is appropriate to pin
     shouldPin: function (currentScrollY, toleranceExceeded) {
-      var scrollingDown = currentScrollY > this.lastKnownScrollY;
-      var pastOffset = currentScrollY + this.getViewportHeight() + this.offset >= this.getScrollerHeight();
-
-      return (scrollingDown && toleranceExceeded) || pastOffset;
-    },
-    // determine if it is appropriate to unpin
-    shouldUnpin: function (currentScrollY, toleranceExceeded) {
       var scrollingUp = currentScrollY < this.lastKnownScrollY;
       var pastOffset = currentScrollY + this.getViewportHeight() + this.offset < this.getScrollerHeight();
 
-      return scrollingUp && toleranceExceeded && pastOffset;
+      return (scrollingUp && toleranceExceeded) || pastOffset;
+    },
+    // determine if it is appropriate to unpin
+    shouldUnpin: function (currentScrollY, toleranceExceeded) {
+      var scrollingDown = currentScrollY > this.lastKnownScrollY;
+      var pastOffset = currentScrollY + this.getViewportHeight() + this.offset >= this.getScrollerHeight();
+
+      return scrollingDown && toleranceExceeded && pastOffset;
     },
     update: function () {
       var currentScrollY = this.getScrollY();

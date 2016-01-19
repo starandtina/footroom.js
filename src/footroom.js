@@ -1,9 +1,8 @@
 /*
  *
- *
- *
  * Copyright (c) 2015 Zhang Xin
  * Licensed under the MIT license.
+ *
  */
 (function ($) {
   function Footroom(elem, options) {
@@ -16,7 +15,7 @@
     this.tolerance = options.tolerance;
     this.scroller = options.scroller;
     this.offset = options.offset;
-    this.initialised = false;
+    this.initialized = false;
 
     this.onPin = options.onPin;
     this.onUnpin = options.onUnpin;
@@ -27,16 +26,16 @@
       _.defer(_.bind(this.attachEvent, this), 100);
     },
     destroy: function () {
-      this.initialised = false;
+      this.initialized = false;
       var classes = this.classes;
       this.$elem.removeClass([classes.unpinned, classes.pinned, classes.top, classes.initial].join(' '));
       $(this.scroller).off('scroll.footroom');
     },
     //Attaches the scroll event
     attachEvent: function () {
-      if (!this.initialised) {
+      if (!this.initialized) {
         this.lastKnownScrollY = this.getScrollY();
-        this.initialised = true;
+        this.initialized = true;
         $(this.scroller).on('scroll.footroom', _.throttle(_.bind(this.update, this), 250));
       }
     },

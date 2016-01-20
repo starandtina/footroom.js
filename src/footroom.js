@@ -42,7 +42,7 @@
     pin: function () {
       var classes = this.classes;
 
-      if (this.$elem.hasClass(classes.unpinned)) {
+      if (this.$elem.hasClass(classes.unpinned) || !this.$elem.hasClass(classes.pinned)) {
         this.$elem.addClass(classes.pinned);
         this.$elem.removeClass(classes.unpinned);
         if (this.onPin) {

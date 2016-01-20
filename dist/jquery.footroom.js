@@ -1,5 +1,5 @@
-/*! footroom - v0.0.1 - 2015-07-21
-* Copyright (c) 2015 Zhang Xin; Licensed MIT */
+/*! footroom - v0.0.1 - 2016-01-20
+* Copyright (c) 2016 Zhang Xin; Licensed MIT */
 (function ($) {
   function Footroom(elem, options) {
     options = _.defaults(options, Footroom.options);
@@ -11,7 +11,7 @@
     this.tolerance = options.tolerance;
     this.scroller = options.scroller;
     this.offset = options.offset;
-    this.initialised = false;
+    this.initialized = false;
 
     this.onPin = options.onPin;
     this.onUnpin = options.onUnpin;
@@ -22,16 +22,16 @@
       _.defer(_.bind(this.attachEvent, this), 100);
     },
     destroy: function () {
-      this.initialised = false;
+      this.initialized = false;
       var classes = this.classes;
       this.$elem.removeClass([classes.unpinned, classes.pinned, classes.top, classes.initial].join(' '));
       $(this.scroller).off('scroll.footroom');
     },
     //Attaches the scroll event
     attachEvent: function () {
-      if (!this.initialised) {
+      if (!this.initialized) {
         this.lastKnownScrollY = this.getScrollY();
-        this.initialised = true;
+        this.initialized = true;
         $(this.scroller).on('scroll.footroom', _.throttle(_.bind(this.update, this), 250));
       }
     },
@@ -121,17 +121,17 @@
     },
     // determine if it is appropriate to pin
     shouldPin: function (currentScrollY, toleranceExceeded) {
-      var scrollingDown = currentScrollY > this.lastKnownScrollY;
-      var pastOffset = currentScrollY + this.getViewportHeight() - this.offset >= this.getScrollerHeight();
-
-      return (scrollingDown && toleranceExceeded) || pastOffset;
-    },
-    // determine if it is appropriate to unpin
-    shouldUnpin: function (currentScrollY, toleranceExceeded) {
       var scrollingUp = currentScrollY < this.lastKnownScrollY;
       var pastOffset = currentScrollY + this.getViewportHeight() + this.offset < this.getScrollerHeight();
 
-      return scrollingUp && toleranceExceeded && pastOffset;
+      return (scrollingUp && toleranceExceeded) || pastOffset;
+    },
+    // determine if it is appropriate to unpin
+    shouldUnpin: function (currentScrollY, toleranceExceeded) {
+      var scrollingDown = currentScrollY > this.lastKnownScrollY;
+      var pastOffset = currentScrollY + this.getViewportHeight() + this.offset >= this.getScrollerHeight();
+
+      return scrollingDown && toleranceExceeded && pastOffset;
     },
     update: function () {
       var currentScrollY = this.getScrollY();
@@ -176,9 +176,9 @@
 
   $.fn.footroom = function (option) {
     return this.each(function () {
-      var $this = $(this),
-        data = $this.data('footroom'),
-        options = typeof option === 'object' && option;
+      var $this = $(this);
+      var data = $this.data('footroom');
+      var options = typeof option === 'object' && option;
 
       options = $.extend(true, {}, Footroom.options, options);
 
